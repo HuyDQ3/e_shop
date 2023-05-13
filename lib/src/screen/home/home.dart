@@ -1,14 +1,15 @@
 // import 'dart:js_interop';
-
 import 'package:e_shop/export.dart';
+import 'package:e_shop/src/screen/home/account/account.dart';
+import 'package:e_shop/src/screen/home/trend/trend.dart';
 
 class Home extends Screen {
-  final String _now = addresses.path('Home');
+  String _now = addresses.path('Home');
   final Map<String, String> _next = {
     'Login': addresses.path('Login'),
   };
   // Map<String, String>? _login;
-  final String? _name;
+  String? _name;
 
   Home({Key? key, required String? name})
       : _name = name,
@@ -30,10 +31,10 @@ class Home extends Screen {
 
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
-  List<Widget> _widgetOptions = [
-    Text('Index 0'),
-    Text('Index 1'),
-    Text('Index 2'),
+  late List<Widget> _widgetOptions = [
+    Shop(),
+    Trend(),
+    Account(now: addresses.path('Home'), name: widget._name ?? '?'),
   ];
 
   void _onItemTapped(int index) {
@@ -42,25 +43,33 @@ class _HomeState extends State<Home> {
     });
   }
 
+  Widget _title(int index) {
+    switch (index) {
+      case 0:
+        return Text('title 0');
+      case 1:
+        return Text('title 1');
+      case 2:
+        return Text('title 2');
+      default:
+        return Text('title default');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     Scaffold scaffold = Scaffold(
       appBar: AppBar(
-        // leading: addresses.preArrowBackButton(context, widget._now, iconData: Icons.logout),
-        title: widget._name == null
-            ? throw 'error, username is null'
-            : Text('Welcome ${widget._name}!'),
+        automaticallyImplyLeading: false,
+        actions: [Icon(Icons.notifications)],
+        // title: widget._name == null
+        //     ? throw 'error, username is null'
+        //     : Text('Welcome ${widget._name}!'),
+        title: _title(_selectedIndex),
       ),
       body: Wrap(
         children: [
           _widgetOptions.elementAt(_selectedIndex),
-          ElevatedButton(
-            // onPressed: () => context.go('/${Login().now}'),
-            onPressed: () {
-              addresses.goPreLocation(context, widget._now);
-            },
-            child: const Text('Go back to the First screen (logout)'),
-          ),
           // ElevatedButton(
           //   onPressed: () {
           //     setState(() {
@@ -90,11 +99,11 @@ class _HomeState extends State<Home> {
         onTap: _onItemTapped,
       ),
     );
-    return WillPopScope(
-      onWillPop: () =>
-          addresses.onWillPop(context, widget._now, action: 'logout'),
-      child: scaffold,
-    );
-    // return scaffold;
+    // return WillPopScope(
+    //   onWillPop: () =>
+    //       addresses.onWillPop(context, widget._now, action: 'logout'),
+    //   child: scaffold,
+    // );
+    return scaffold;
   }
 }
