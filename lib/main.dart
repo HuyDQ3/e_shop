@@ -1,4 +1,5 @@
 import 'package:e_shop/export.dart';
+import 'package:e_shop/src/screen/home/search.dart';
 // import 'package:flutter_web_plugins/url_strategy.dart';
 
 void main() {
@@ -60,7 +61,12 @@ class MainApp extends StatelessWidget {
       path: addresses.path('About'),
       builder: (context, state) => About(),
     );
-    // home
+    // search
+    GoRoute search = GoRoute(
+      path: addresses.path('Search'),
+      builder: (context, state) => Search(),
+    );
+    // home -> search
     GoRoute home = GoRoute(
       // path: '${addresses.path('Home')}/:name',
       // builder: (context, state) {
@@ -68,6 +74,7 @@ class MainApp extends StatelessWidget {
       // }
       path: addresses.path('Home'),
       builder: (context, state) => Home(name: 'Huy'),
+      routes: <RouteBase>[],
     );
     // first -> login -> forgot || register || about
     // login success -> home
@@ -82,6 +89,7 @@ class MainApp extends StatelessWidget {
         about,
         register,
         home,
+        search,
       ],
     );
 

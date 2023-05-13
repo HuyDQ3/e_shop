@@ -24,6 +24,8 @@ class Address {
 
   Map<String, String> _path = {
     'Error': 'error',
+    // first -> login || about
+    // login -> forgot || home || register
     'First': '/',
     'Login': 'login',
     'About': 'about',
@@ -34,6 +36,7 @@ class Address {
     'ByPhone': 'byphone',
     'ByMail': 'bymail',
     'Fcode': 'fcode',
+    'Search': 'search',
     // 'x': '/${x().now}',
   };
 
@@ -49,6 +52,7 @@ class Address {
     'Bymail': ['/forgot', '/bymail'],
     'Fcodemail': ['/forgot', '/bymail/', 'fcode'],
     'Fcodephone': ['/forgot', '/byphone', '/fcode'],
+    'Search': ['/search'],
     // 'x': '/${x().now}',
   };
 
@@ -127,12 +131,19 @@ class Address {
   }
 
   IconButton preArrowBackButton(BuildContext context, String now,
-      {IconData? iconData}) {
+      {IconData? iconData, String? changeLocation}) {
     Icon icon = Icon(iconData ?? Icons.arrow_back);
 
     IconButton iconButton = IconButton(
       icon: icon,
-      onPressed: () => addresses.goPreLocation(context, now),
+      onPressed: () {
+        if (changeLocation == null) {
+          addresses.goPreLocation(context, now);
+        } else {
+          addresses.changeLocation(context,
+              replaceLocation: now, detailReplaceLocation: changeLocation);
+        }
+      },
     );
     return iconButton;
   }
@@ -269,14 +280,16 @@ class Address {
       {required String? replaceLocation,
       String? detailReplaceLocation,
       String? extraObject}) {
-    if (_address.isEmpty) {
-      throw 'cannot chagneLocation because address == null';
+    if (_address.isEmpty && replaceLocation == null) {
+      throw 'cannot changeLocation because address is empty, replaceLocation = null';
     }
     if (replaceLocation == null) {
       // dua den man hinh hien thi null error
       // print('changelocation:error');
       throw 'cannot changeLocaion because replaceLocation == null';
     }
+    fixAddressIfNonLinearAccess(replaceLocation);
+    print('goPreLocation: fix address : ${foldAddress()}');
     if (replaceLocation == '/') {
       _address.clear();
       // context.go(replaceLocation);
@@ -293,11 +306,13 @@ class Address {
       } else {
         String detailReplaceLocationPath =
             changePathToRightFormat(detailReplaceLocation);
-        if (!existInAddress(detailReplaceLocationPath)) {
-          throw 'cannot changeLocation because detailReplaceLocation is not exist in address';
+        if (!existInAddress(replaceLocationPath)) {
+          print(replaceLocationPath);
+          print(foldAddress());
+          throw 'cannot changeLocation because replaceLocation is not exist in address';
         }
-        removeFromLastElementTo(detailReplaceLocationPath,
-            replace: replaceLocationPath);
+        removeFromLastElementTo(replaceLocationPath,
+            replace: detailReplaceLocationPath);
         // addOneParamInPath(replaceLocationPath, extraObject);
         context.go(foldAddress());
       }

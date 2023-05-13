@@ -15,6 +15,7 @@ export 'package:e_shop/src/screen/first/first.dart';
 export 'package:e_shop/src/screen/login/forgot/bymail/by_mail.dart';
 export 'package:e_shop/src/screen/login/forgot/byphone/by_phone.dart';
 export 'package:e_shop/src/screen/login/forgot/fcode/fcode.dart';
+export 'package:e_shop/src/screen/home/shop/shop.dart';
 // data
 export 'package:e_shop/src/data/address.dart';
 // error
