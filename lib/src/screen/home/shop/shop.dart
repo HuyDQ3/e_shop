@@ -12,7 +12,7 @@ class _ShopState extends State<Shop> {
   Widget build(BuildContext context) {
     return Wrap(
       children: [
-        Text('Index 0 Shop'),
+        Text('Shop'),
       ],
     );
   }

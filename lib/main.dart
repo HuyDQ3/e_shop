@@ -24,11 +24,13 @@ class MainApp extends StatelessWidget {
       builder: (context, state) => Login(),
       routes: <RouteBase>[],
     );
+
     // register
     GoRoute register = GoRoute(
       path: addresses.path('Register'),
       builder: (context, state) => Register(),
     );
+
     // forgot -> bymail/byPhone -> fCode
     GoRoute fCode = GoRoute(
       path: addresses.path('Fcode'),
@@ -56,17 +58,14 @@ class MainApp extends StatelessWidget {
         byPhone,
       ],
     );
+
     // about
     GoRoute about = GoRoute(
       path: addresses.path('About'),
       builder: (context, state) => About(),
     );
-    // search
-    GoRoute search = GoRoute(
-      path: addresses.path('Search'),
-      builder: (context, state) => Search(),
-    );
-    // home -> search
+
+    // home
     GoRoute home = GoRoute(
       // path: '${addresses.path('Home')}/:name',
       // builder: (context, state) {
@@ -76,6 +75,19 @@ class MainApp extends StatelessWidget {
       builder: (context, state) => Home(name: 'Huy'),
       routes: <RouteBase>[],
     );
+
+    // search
+    GoRoute search = GoRoute(
+      path: addresses.path('Search'),
+      builder: (context, state) => Search(),
+    );
+
+    // shop
+    GoRoute shop = GoRoute(
+      path: addresses.path('Search'),
+      builder: (context, state) => Home(name: 'Huy'),
+    );
+
     // first -> login -> forgot || register || about
     // login success -> home
     // register success -> home
@@ -85,11 +97,12 @@ class MainApp extends StatelessWidget {
       builder: (context, state) => First(),
       routes: <RouteBase>[
         login,
+        register,
         forgot,
         about,
-        register,
         home,
         search,
+        shop,
       ],
     );
 
