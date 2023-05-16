@@ -27,14 +27,14 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          leading: addresses.preArrowBackButton(context, widget._now),
+          // leading: addresses.preArrowBackButton(context, widget._now),
           title: const Text('Login')),
       body: Wrap(
         children: [
           ElevatedButton(
               onPressed: () {
                 // context.go(widget._pre);
-                addresses.goPreLocation(context, widget._now);
+                context.go('/');
               },
               child: const Text('return First')),
           ElevatedButton(
@@ -44,26 +44,26 @@ class _LoginState extends State<Login> {
                 //     extraObject: widget._name);
                 // addresses.addOneParamInPath(
                 //     addresses.path('Home'), widget._name);
-                addresses.changeLocation(
-                  context,
-                  replaceLocation: widget._next['Home'],
-                );
+                context.go('/home');
                 // context.go('home/Huy');
               },
               child: const Text('login success with username: Huy -> Home')),
           ElevatedButton(
               onPressed: () {
                 // context.go(widget._next['Forgot']!);
-                addresses.changeLocation(context,
-                    replaceLocation: widget._next['Forgot']);
+                context.go('/forgot');
               },
               child: const Text('Forgot')),
           ElevatedButton(
               onPressed: () {
-                addresses.changeLocation(context,
-                    replaceLocation: widget._next['Register']);
+                context.go('/register');
               },
               child: const Text('Register')),
+          ElevatedButton(
+              onPressed: () {
+                context.go('/about');
+              },
+              child: const Text('About')),
         ],
       ),
     );

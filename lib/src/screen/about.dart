@@ -24,22 +24,20 @@ class _AboutState extends State<About> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: addresses.preArrowBackButton(context, widget._now),
+        // leading: addresses.preArrowBackButton(context, widget._now),
         title: const Text('about'),
       ),
       body: Wrap(
         children: [
           ElevatedButton(
             onPressed: () {
-              addresses.changeLocation(context,
-                  replaceLocation: widget._next['First']);
+              context.go('/');
             },
             child: const Text('Go back to the First screen'),
           ),
           ElevatedButton(
             onPressed: () {
-              addresses.changeLocation(context,
-                  replaceLocation: widget._next['Login']);
+              context.go('/login');
             },
             child: const Text('Go back to the Login screen'),
           ),

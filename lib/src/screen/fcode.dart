@@ -24,29 +24,20 @@ class _FcodeState extends State<Fcode> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: addresses.preArrowBackButton(context, widget._now),
+        // leading: addresses.preArrowBackButton(context, widget._now),
         title: const Text('Fcode'),
       ),
       body: Wrap(
         children: [
           ElevatedButton(
             onPressed: () {
-              addresses.goPreLocation(context, widget._now);
-            },
-            child: const Text('return bymail/byphone'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              addresses.changeLocation(context,
-                  replaceLocation: widget._next['Home'],
-                  detailReplaceLocation: widget._next['Forgot']);
+              context.go('/home');
             },
             child: const Text('fcode is true -> go to home'),
           ),
           ElevatedButton(
             onPressed: () {
-              addresses.goPreLocation(
-                  context, widget._now, widget._next['Forgot']);
+              context.go('/forgot');
             },
             child: const Text('return to Forgot'),
           ),

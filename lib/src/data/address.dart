@@ -37,6 +37,7 @@ class Address {
     'ByMail': 'bymail',
     'Fcode': 'fcode',
     'Search': 'search',
+    'Shop': 'shop',
     // 'x': '/${x().now}',
   };
 
@@ -53,6 +54,7 @@ class Address {
     'Fcodemail': ['/forgot', '/bymail/', 'fcode'],
     'Fcodephone': ['/forgot', '/byphone', '/fcode'],
     'Search': ['/search'],
+    'Shop': ['/shop'],
     // 'x': '/${x().now}',
   };
 

@@ -50,15 +50,13 @@ class _FirstState extends State<First> {
               ElevatedButton(
                   onPressed: () {
                     // context.go(widget._next['Login'] ?? widget._now);
-                    addresses.goLocation(context,
-                        now: widget._now, next: widget._next['Login']);
+                    context.go('/login');
                   },
                   child: const Text('Login')),
               ElevatedButton(
                   onPressed: () {
                     // context.go(widget._next['About']!);
-                    addresses.goLocation(context,
-                        now: widget._now, next: widget._next['About']);
+                    context.go('/about');
                   },
                   child: const Text('About')),
             ],

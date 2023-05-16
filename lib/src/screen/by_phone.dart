@@ -23,21 +23,20 @@ class _ByPhoneState extends State<ByPhone> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: addresses.preArrowBackButton(context, widget._now),
+        // leading: addresses.preArrowBackButton(context, widget._now),
         title: const Text('By phone'),
       ),
       body: Wrap(
         children: [
           ElevatedButton(
             onPressed: () {
-              addresses.goLocation(context,
-                  now: widget._now, next: widget._next['Fcode']);
+              context.go('forgot/byphone/fcode');
             },
             child: const Text('phone is true -> send fcode'),
           ),
           ElevatedButton(
             onPressed: () {
-              addresses.goPreLocation(context, widget._now);
+              context.go('/forgot');
             },
             child: const Text('phone is false -> return forgot'),
           ),
