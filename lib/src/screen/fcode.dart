@@ -3,20 +3,8 @@ import 'package:e_shop/export.dart';
 class Fcode extends Screen {
   Fcode({Key? key}) : super(key: key);
 
-  final String _now = addresses.path('Fcode');
-  final Map<String, String> _next = {
-    'Home': addresses.path('Home'),
-    'Forgot': addresses.path('Forgot'),
-  };
-
   @override
   _FcodeState createState() => _FcodeState();
-
-  // TODO: implement nextRoute
-  Map<String, String> get next => _next;
-
-  // TODO: implement now
-  String get now => _now;
 }
 
 class _FcodeState extends State<Fcode> {

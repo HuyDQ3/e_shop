@@ -1,5 +1,4 @@
 import 'package:e_shop/export.dart';
-import 'package:e_shop/src/screen/navigation.dart';
 
 // import 'package:flutter_web_plugins/url_strategy.dart';
 
@@ -8,7 +7,14 @@ final GlobalKey<NavigatorState> _rootNavigatorKey =
 final GlobalKey<NavigatorState> _shellNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'shell');
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Supabase.initialize(
+    url: 'https://degfvhnmsyqvjtluvtim.supabase.co',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlZ2Z2aG5tc3lxdmp0bHV2dGltIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQzMTU3ODAsImV4cCI6MTk5OTg5MTc4MH0.kg0HcZCyyWfc4Kz6ZPuVIAfBHHheBouawMSWSoRK5DE',
+  );
   // usePathUrlStrategy();
   runApp(MainApp());
 }
@@ -119,122 +125,47 @@ class MainApp extends StatelessWidget {
 
   MainApp({super.key});
 
+  // @override
+  // Widget build(BuildContext context) {
+  //   return MaterialApp.router(
+  //     routerConfig: _routerConfig,
+  //   );
+  // }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   return MaterialApp(
+  //     title: 'Supabase Flutter',
+  //     theme: ThemeData.dark().copyWith(
+  //       primaryColor: Colors.green,
+  //       textButtonTheme: TextButtonThemeData(
+  //         style: TextButton.styleFrom(
+  //           foregroundColor: Colors.green,
+  //         ),
+  //       ),
+  //       elevatedButtonTheme: ElevatedButtonThemeData(
+  //         style: ElevatedButton.styleFrom(
+  //           foregroundColor: Colors.white,
+  //           backgroundColor: Colors.green,
+  //         ),
+  //       ),
+  //     ),
+  //     initialRoute: '/',
+  //     routes: <String, WidgetBuilder>{
+  //       '/': (_) => const SplashPage(),
+  //       '/login': (_) => const LoginPage(),
+  //       '/account': (_) => const AccountPage(),
+  //     },
+  //   );
+  // }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: _routerConfig,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'My Chat App',
+      theme: appTheme,
+      home: const SplashPage(),
     );
-  }
-
-  GoRouter _a() {
-    // login -> home
-    GoRoute login = GoRoute(
-      path: addresses.path('Login'),
-      builder: (context, state) => Login(),
-      routes: <RouteBase>[],
-    );
-
-    // register
-    GoRoute register = GoRoute(
-      path: addresses.path('Register'),
-      builder: (context, state) => Register(),
-    );
-
-    // forgot -> bymail/byPhone -> fCode
-    GoRoute fCode = GoRoute(
-      path: addresses.path('Fcode'),
-      builder: (context, state) => Fcode(),
-    );
-    GoRoute byPhone = GoRoute(
-      path: addresses.path('ByPhone'),
-      builder: (context, state) => ByPhone(),
-      routes: <RouteBase>[
-        fCode,
-      ],
-    );
-    GoRoute byMail = GoRoute(
-      path: addresses.path('ByMail'),
-      builder: (context, state) => ByMail(),
-      routes: <RouteBase>[
-        fCode,
-      ],
-    );
-    GoRoute forgot = GoRoute(
-      path: addresses.path('Forgot'),
-      builder: (context, state) => Forgot(),
-      routes: <RouteBase>[
-        byMail,
-        byPhone,
-      ],
-    );
-
-    // about
-    GoRoute about = GoRoute(
-      path: addresses.path('About'),
-      builder: (context, state) => About(),
-    );
-
-    // home
-    GoRoute home = GoRoute(
-      // path: '${addresses.path('Home')}/:name',
-      // builder: (context, state) {
-      //   return Home(name: state.params['name']);
-      // }
-      path: addresses.path('Home'),
-      builder: (context, state) => Home(name: 'Huy'),
-      routes: <RouteBase>[],
-    );
-
-    // search
-    GoRoute search = GoRoute(
-      path: addresses.path('Search'),
-      builder: (context, state) => Search(
-        isTapped: true,
-      ),
-    );
-
-    // shop
-    GoRoute shop = GoRoute(
-      path: addresses.path('Search'),
-      builder: (context, state) => Home(name: 'Huy'),
-    );
-
-    // first -> login -> forgot || register || about
-    // login success -> home
-    // register success -> home
-    // forgot success -> home
-    GoRoute first = GoRoute(
-      path: addresses.path('First'),
-      builder: (context, state) => First(),
-      routes: <RouteBase>[
-        login,
-        register,
-        forgot,
-        about,
-        home,
-        search,
-        shop,
-      ],
-    );
-
-    final GoRouter routerConfig = GoRouter(
-      // errorBuilder: (context, state) {
-      //   return Row();
-      // },
-      // redirect: (context, state) {
-      //   if (Login().getIsLoggedIn) {
-      //     return '/${Home().now}';
-      //   }
-      //   return Login().now;
-      // },
-
-      errorBuilder: (context, state) {
-        return const RouteNameError();
-      },
-      routes: [
-        first,
-      ],
-    );
-    return routerConfig;
   }
 }

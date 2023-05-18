@@ -1,22 +1,10 @@
 import 'package:e_shop/export.dart';
 
 class ByMail extends Screen {
-  final String _now = addresses.path('ByMail');
-  final Map<String, String> _next = {
-    'Fcode': addresses.path('Fcode'),
-    'Forgot': addresses.path('Forgot'),
-  };
-
   ByMail({Key? key}) : super(key: key);
 
   @override
   _ByMailState createState() => _ByMailState();
-
-  // TODO: implement nextRoute
-  Map<String, String> get next => _next;
-
-  // TODO: implement now
-  String get now => _now;
 }
 
 class _ByMailState extends State<ByMail> {

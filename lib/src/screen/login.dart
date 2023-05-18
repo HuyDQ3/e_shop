@@ -2,24 +2,12 @@ import 'package:e_shop/export.dart';
 
 class Login extends Screen {
   // String _pre = addresses.location('First');
-  final String _now = addresses.path('Login');
-  final Map<String, String> _next = {
-    'Home': addresses.path('Home'),
-    'Forgot': addresses.path('Forgot'),
-    'Register': addresses.path('Register'),
-  };
-  final String _name = 'Huy';
+  // final String _name = 'Huy';
 
   Login({super.key});
 
   @override
   _LoginState createState() => _LoginState();
-
-  Map<String, String> get next => _next;
-
-  // String get pre => _pre;
-
-  String get now => _now;
 }
 
 class _LoginState extends State<Login> {
