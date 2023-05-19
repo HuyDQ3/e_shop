@@ -36,6 +36,7 @@ export 'package:e_shop/src/screen/account_test.dart';
 export 'package:e_shop/src/data/data.dart';
 export 'package:e_shop/src/screen/avatar.dart';
 export 'package:e_shop/src/screen/register_test.dart';
+export 'package:e_shop/src/screen/chat_test.dart';
 
 // data
 export 'package:e_shop/src/data/address.dart';
