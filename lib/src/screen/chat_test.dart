@@ -1,4 +1,5 @@
 import 'package:e_shop/export.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:timeago/timeago.dart';
 
 /// Page to chat with someone.

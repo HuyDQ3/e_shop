@@ -1,4 +1,5 @@
 import 'package:e_shop/export.dart';
+// import 'package:supabase_flutter/supabase_flutter.dart';
 
 // import 'package:flutter_web_plugins/url_strategy.dart';
 
@@ -10,13 +11,32 @@ final GlobalKey<NavigatorState> _shellNavigatorKey =
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  await Supabase.initialize(
-    url: 'https://degfvhnmsyqvjtluvtim.supabase.co',
-    anonKey:
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlZ2Z2aG5tc3lxdmp0bHV2dGltIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQzMTU3ODAsImV4cCI6MTk5OTg5MTc4MH0.kg0HcZCyyWfc4Kz6ZPuVIAfBHHheBouawMSWSoRK5DE',
-  );
+  // await Supabase.initialize(
+  //   url: 'https://degfvhnmsyqvjtluvtim.supabase.co',
+  //   anonKey:
+  //       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlZ2Z2aG5tc3lxdmp0bHV2dGltIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODQzMTU3ODAsImV4cCI6MTk5OTg5MTc4MH0.kg0HcZCyyWfc4Kz6ZPuVIAfBHHheBouawMSWSoRK5DE',
+  // );
   // usePathUrlStrategy();
-  runApp(MainApp());
+  // runApp(MainApp());
+  runApp(MultiProvider(
+    providers: [
+      // In this sample app, CatalogModel never changes, so a simple Provider
+      // is sufficient.
+      Provider(create: (context) => CatalogModel()),
+      // CartModel is implemented as a ChangeNotifier, which calls for the use
+      // of ChangeNotifierProvider. Moreover, CartModel depends
+      // on CatalogModel, so a ProxyProvider is needed.
+      ChangeNotifierProxyProvider<CatalogModel, CartModel>(
+        create: (context) => CartModel(),
+        update: (context, catalog, cart) {
+          if (cart == null) throw ArgumentError.notNull('cart');
+          cart.catalog = catalog;
+          return cart;
+        },
+      ),
+    ],
+    child: MainApp(),
+  ));
 }
 
 class MainApp extends StatelessWidget {
@@ -118,6 +138,19 @@ class MainApp extends StatelessWidget {
               ),
             ],
           ),
+          GoRoute(
+            path: 'category',
+            builder: (context, state) => CustomerCategory(),
+            routes: <RouteBase>[
+              // GoRoute(
+              //   path: 'search',
+              //   builder: (context, state) => Search(
+              //     isTapped: true,
+              //   ),
+              //   routes: <RouteBase>[],
+              // ),
+            ],
+          ),
         ],
       ),
     ],
@@ -125,12 +158,12 @@ class MainApp extends StatelessWidget {
 
   MainApp({super.key});
 
-  // @override
-  // Widget build(BuildContext context) {
-  //   return MaterialApp.router(
-  //     routerConfig: _routerConfig,
-  //   );
-  // }
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp.router(
+      routerConfig: _routerConfig,
+    );
+  }
 
   // @override
   // Widget build(BuildContext context) {
@@ -159,13 +192,13 @@ class MainApp extends StatelessWidget {
   //   );
   // }
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'My Chat App',
-      theme: appTheme,
-      home: const SplashPage(),
-    );
-  }
+  // @override
+  // Widget build(BuildContext context) {
+  //   return MaterialApp(
+  //     debugShowCheckedModeBanner: false,
+  //     title: 'My Chat App',
+  //     theme: appTheme,
+  //     home: const SplashPage(),
+  //   );
+  // }
 }

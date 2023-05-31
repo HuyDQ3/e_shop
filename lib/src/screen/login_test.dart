@@ -1,4 +1,5 @@
 import 'package:e_shop/export.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

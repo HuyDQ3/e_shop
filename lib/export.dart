@@ -5,11 +5,12 @@ export 'dart:collection';
 export 'dart:async';
 export 'package:flutter/foundation.dart';
 export 'package:image_picker/image_picker.dart';
+export 'package:provider/provider.dart';
 // export 'dart:js';
 // export 'package:url_strategy/url_strategy.dart';
 
 // supabase
-export 'package:supabase_flutter/supabase_flutter.dart';
+// export 'package:supabase_flutter/supabase_flutter.dart';
 export 'package:e_shop/constants.dart';
 
 // screen
@@ -28,6 +29,7 @@ export 'package:e_shop/src/screen/trend.dart';
 export 'package:e_shop/src/screen/account.dart';
 export 'package:e_shop/src/screen/search.dart';
 export 'package:e_shop/src/screen/navigation.dart';
+export 'package:e_shop/src/screen/customer_category.dart';
 
 // screen supabase test
 export 'package:e_shop/src/screen/splash_page.dart';
@@ -38,9 +40,11 @@ export 'package:e_shop/src/screen/avatar.dart';
 export 'package:e_shop/src/screen/register_test.dart';
 export 'package:e_shop/src/screen/chat_test.dart';
 
-// data
+// data/model
 export 'package:e_shop/src/data/address.dart';
 export 'package:e_shop/src/data/style.dart';
+export 'package:e_shop/src/model/cart.dart';
+export 'package:e_shop/src/model/catalog.dart';
 
 // error
 export 'package:e_shop/src/screen/error/error.dart';

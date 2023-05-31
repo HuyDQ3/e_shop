@@ -1,4 +1,8 @@
 import 'package:e_shop/export.dart';
+import 'package:e_shop/src/model/cart.dart';
+import 'package:e_shop/src/screen/catalog.dart';
+import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 
 class Shop extends StatefulWidget {
   const Shop({Key? key}) : super(key: key);
@@ -16,12 +20,9 @@ class _ShopState extends State<Shop> {
       appBar: PreferredSize(
           child: _appBar,
           preferredSize: Size.fromHeight(HeightAndWidth().appBarHeight)),
-      body: Wrap(
-        children: [
-          Text('Shop'),
-        ],
-      ),
+      body: MyCatalog(),
     );
+    // return scaffold;
     return scaffold;
   }
 }

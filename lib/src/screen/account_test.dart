@@ -1,6 +1,5 @@
 import 'package:e_shop/export.dart';
-
-import 'avatar.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key});

@@ -52,8 +52,10 @@ class _SearchState extends State<Search> {
           width: 50,
           // height: 20,
           child: IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.shopping_bag_outlined),
+            onPressed: () {
+              context.go('/category');
+            },
+            icon: Icon(Icons.shopping_cart_outlined),
           ),
         ),
         SizedBox(
