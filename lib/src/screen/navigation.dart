@@ -34,10 +34,10 @@ class _ShellNavigatiorState extends State<ShellNavigatior> {
             tooltip: 'Shop',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.trending_up_outlined),
-            activeIcon: Icon(Icons.trending_up),
-            label: 'Trend',
-            tooltip: 'Trend',
+            icon: Icon(Icons.notifications_none),
+            activeIcon: Icon(Icons.notifications),
+            label: 'Notify',
+            tooltip: 'Notify',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_box_outlined),
@@ -67,7 +67,7 @@ class _ShellNavigatiorState extends State<ShellNavigatior> {
       print(location);
       return Search(isTapped: false);
     }
-    if (location.startsWith('/trend')) {
+    if (location.startsWith('/notification')) {
       print(location);
       return Search(isTapped: false);
     }
@@ -88,7 +88,7 @@ class _ShellNavigatiorState extends State<ShellNavigatior> {
       print(location);
       return 1;
     }
-    if (location.startsWith('/trend')) {
+    if (location.startsWith('/notification')) {
       print(location);
       return 2;
     }
@@ -108,7 +108,7 @@ class _ShellNavigatiorState extends State<ShellNavigatior> {
         context.go('/shop');
         break;
       case 2:
-        context.go('/trend');
+        context.go('/notification');
         break;
       case 3:
         context.go('/account');

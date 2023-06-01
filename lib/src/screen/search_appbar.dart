@@ -12,13 +12,13 @@ class Search extends Screen {
 }
 
 class _SearchState extends State<Search> {
-  Widget _searchTitle() {
+  Widget _searchAppbar() {
     return Row(
       mainAxisSize: MainAxisSize.max,
       children: [
         IconButton(
           onPressed: () {
-            context.go('${GoRouterState.of(context).location}/search');
+            context.push('/search');
           },
           icon: Icon(Icons.search),
         ),
@@ -32,7 +32,7 @@ class _SearchState extends State<Search> {
             height: 40,
             child: TextButton(
               onPressed: () {
-                context.go('${GoRouterState.of(context).location}/search');
+                context.push('/search');
               },
               child: Row(
                 children: [
@@ -53,7 +53,7 @@ class _SearchState extends State<Search> {
           // height: 20,
           child: IconButton(
             onPressed: () {
-              context.go('/category');
+              context.push('/category');
             },
             icon: Icon(Icons.shopping_cart_outlined),
           ),
@@ -63,7 +63,7 @@ class _SearchState extends State<Search> {
           // height: 20,
           child: IconButton(
             onPressed: () {},
-            icon: Icon(Icons.notifications_outlined),
+            icon: Icon(Icons.chat_bubble_outline),
           ),
         ),
       ],
@@ -103,7 +103,7 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     if (!widget.isTapped) {
       return AppBar(
-        title: _searchTitle(),
+        title: _searchAppbar(),
         backgroundColor: StyleColor().backgroundTitle,
         toolbarHeight: HeightAndWidth().appBarHeight,
         // foregroundColor: StyleColor().backgroundNavigator,

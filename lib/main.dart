@@ -97,13 +97,7 @@ class MainApp extends StatelessWidget {
                 // }
                 path: 'home',
                 builder: (context, state) => Home(name: 'Huy'),
-                routes: <RouteBase>[
-                  GoRoute(
-                    path: 'search',
-                    builder: (context, state) => Search(isTapped: true),
-                    routes: <RouteBase>[],
-                  ),
-                ],
+                routes: <RouteBase>[],
               ),
               GoRoute(
                 path: 'account',
@@ -111,30 +105,14 @@ class MainApp extends StatelessWidget {
                 routes: <RouteBase>[],
               ),
               GoRoute(
-                path: 'trend',
-                builder: (context, state) => Trend(),
-                routes: <RouteBase>[
-                  GoRoute(
-                    path: 'search',
-                    builder: (context, state) => Search(
-                      isTapped: true,
-                    ),
-                    routes: <RouteBase>[],
-                  ),
-                ],
+                path: 'notification',
+                builder: (context, state) => CustomerNotification(),
+                routes: <RouteBase>[],
               ),
               GoRoute(
                 path: 'shop',
                 builder: (context, state) => Shop(),
-                routes: <RouteBase>[
-                  GoRoute(
-                    path: 'search',
-                    builder: (context, state) => Search(
-                      isTapped: true,
-                    ),
-                    routes: <RouteBase>[],
-                  ),
-                ],
+                routes: <RouteBase>[],
               ),
             ],
           ),
@@ -150,6 +128,11 @@ class MainApp extends StatelessWidget {
               //   routes: <RouteBase>[],
               // ),
             ],
+          ),
+          GoRoute(
+            path: 'search',
+            builder: (context, state) => Search(isTapped: true),
+            routes: <RouteBase>[],
           ),
         ],
       ),

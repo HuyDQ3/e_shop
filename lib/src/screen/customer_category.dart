@@ -14,8 +14,8 @@ class _CustomerCategoryState extends State<CustomerCategory> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false,
-        leading: preArrowBackButton(context),
+        automaticallyImplyLeading: true,
+        // leading: preArrowBackButton(context),
         title: Text('Category'),
         // centerTitle: true,
       ),
@@ -39,6 +39,7 @@ class _CustomerCategoryState extends State<CustomerCategory> {
         } else {
           context.go(preRouter);
         }
+        // Navigator.pop(context);
       },
     );
     return iconButton;

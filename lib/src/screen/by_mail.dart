@@ -19,12 +19,12 @@ class _ByMailState extends State<ByMail> {
         children: [
           ElevatedButton(
             onPressed: () {
-              context.go('/forgot/bymail/fcode');
+              context.push('/forgot/bymail/fcode');
             },
             child: const Text('email is true -> send fcode'),
           ),
           ElevatedButton(
-            onPressed: () => {context.go('/forgot')},
+            onPressed: () => {context.pop('/forgot')},
             child: const Text('email is false -> return forgot'),
           ),
         ],

@@ -19,13 +19,13 @@ class _ByPhoneState extends State<ByPhone> {
         children: [
           ElevatedButton(
             onPressed: () {
-              context.go('forgot/byphone/fcode');
+              context.push('/forgot/byphone/fcode');
             },
             child: const Text('phone is true -> send fcode'),
           ),
           ElevatedButton(
             onPressed: () {
-              context.go('/forgot');
+              context.pop('/forgot');
             },
             child: const Text('phone is false -> return forgot'),
           ),

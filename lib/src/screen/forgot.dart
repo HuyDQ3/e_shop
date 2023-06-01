@@ -19,13 +19,13 @@ class _ForgotState extends State<Forgot> {
         children: [
           ElevatedButton(
             onPressed: () {
-              context.go('/forgot/bymail');
+              context.push('/forgot/bymail');
             },
             child: const Text('by email'),
           ),
           ElevatedButton(
             onPressed: () {
-              context.go('/forgot/byphone');
+              context.push('/forgot/byphone');
             },
             child: const Text('by phone'),
           ),

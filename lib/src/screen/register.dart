@@ -24,7 +24,7 @@ class _RegisterState extends State<Register> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: addresses.preArrowBackButton(context, widget._now),
+        // leading: addresses.preArrowBackButton(context, widget._now),
         title: const Text('Register'),
       ),
       body: Wrap(

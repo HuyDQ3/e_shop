@@ -39,17 +39,17 @@ class _LoginState extends State<Login> {
           ElevatedButton(
               onPressed: () {
                 // context.go(widget._next['Forgot']!);
-                context.go('/forgot');
+                context.push('/forgot');
               },
               child: const Text('Forgot')),
           ElevatedButton(
               onPressed: () {
-                context.go('/register');
+                context.push('/register');
               },
               child: const Text('Register')),
           ElevatedButton(
               onPressed: () {
-                context.go('/about');
+                context.push('/about');
               },
               child: const Text('About')),
         ],

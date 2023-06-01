@@ -25,9 +25,9 @@ export 'package:e_shop/src/screen/by_mail.dart';
 export 'package:e_shop/src/screen/by_phone.dart';
 export 'package:e_shop/src/screen/fcode.dart';
 export 'package:e_shop/src/screen/shop.dart';
-export 'package:e_shop/src/screen/trend.dart';
+export 'package:e_shop/src/screen/customer_notification.dart';
 export 'package:e_shop/src/screen/account.dart';
-export 'package:e_shop/src/screen/search.dart';
+export 'package:e_shop/src/screen/search_appbar.dart';
 export 'package:e_shop/src/screen/navigation.dart';
 export 'package:e_shop/src/screen/customer_category.dart';
 

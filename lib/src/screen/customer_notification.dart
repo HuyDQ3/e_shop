@@ -1,13 +1,13 @@
 import 'package:e_shop/export.dart';
 
-class Trend extends StatefulWidget {
-  const Trend({Key? key}) : super(key: key);
+class CustomerNotification extends StatefulWidget {
+  const CustomerNotification({Key? key}) : super(key: key);
 
   @override
-  _TrendState createState() => _TrendState();
+  _CustomerNotificationState createState() => _CustomerNotificationState();
 }
 
-class _TrendState extends State<Trend> {
+class _CustomerNotificationState extends State<CustomerNotification> {
   late Widget _appBar = Search(isTapped: false);
 
   @override
@@ -18,7 +18,7 @@ class _TrendState extends State<Trend> {
           preferredSize: Size.fromHeight(HeightAndWidth().appBarHeight)),
       body: Wrap(
         children: [
-          Text('Trend'),
+          Text('CustomerNotification'),
         ],
       ),
     );
